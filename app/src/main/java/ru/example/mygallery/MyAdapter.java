@@ -2,6 +2,7 @@ package ru.example.mygallery;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,11 +43,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         viewHolder.img.setScaleType(ImageView.ScaleType.CENTER_CROP);
         setImageFromPath(galleryList.get(position).getPath(), viewHolder.img);
-        viewHolder.img.setOnClickListener(new View.OnClickListener() {
+        viewHolder.img.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO что-то может происходить, если кликнуть на изображение
                 Toast.makeText(context, "" + galleryList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), ImageActivity.class);
+                intent.putExtra("Image", galleryList.get(position).getPath());
+//                intent.putExtra("list", galleryList);
+                v.getContext().startActivity(intent);
+
             }
         });
     }

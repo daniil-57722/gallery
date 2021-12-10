@@ -1,6 +1,7 @@
 package ru.example.mygallery;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private void showImages() {
 
         Uri allImagesuri = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-        String[] projection = { MediaStore.Images.ImageColumns.DATA ,MediaStore.Images.Media.DISPLAY_NAME,
-                MediaStore.Images.Media.BUCKET_DISPLAY_NAME,MediaStore.Images.Media.BUCKET_ID};
+        String[] projection = {MediaStore.Images.ImageColumns.DATA, MediaStore.Images.Media.DISPLAY_NAME,
+                MediaStore.Images.Media.BUCKET_DISPLAY_NAME, MediaStore.Images.Media.BUCKET_ID};
         Cursor cursor = this.getContentResolver().query(allImagesuri, projection, null, null, null);
         try {
             int count = 0;
@@ -49,19 +50,20 @@ public class MainActivity extends AppCompatActivity {
             if (cursor != null) {
                 cursor.moveToLast();
             }
-            do{
+            do {
                 Cell path = new Cell();
                 path.setTitle(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME)));
                 path.setPath(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)));
                 count++;
-                allFilesPaths.add(path);}
-            while(cursor.moveToPrevious()&&count<100);
-        cursor.close();
-    }
-        catch (Exception e) {
+                allFilesPaths.add(path);
+            }
+            while (cursor.moveToPrevious() && count < 100);
+            cursor.close();
+        } catch (Exception e) {
             e.printStackTrace();
-        }for(int i = 0;i < allFilesPaths.size();i++){
-            Log.d("picture folders",allFilesPaths.get(i).getTitle()+" and path = "+allFilesPaths.get(i).getPath());
+        }
+        for (int i = 0; i < allFilesPaths.size(); i++) {
+            Log.d("picture folders", allFilesPaths.get(i).getTitle() + " and path = " + allFilesPaths.get(i).getPath());
         }
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.gallery);
         recyclerView.setNestedScrollingEnabled(false);
@@ -92,3 +94,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
