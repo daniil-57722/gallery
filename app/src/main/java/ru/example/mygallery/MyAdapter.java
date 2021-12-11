@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +18,14 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private ArrayList<Cell> galleryList;
     private Context context;
+    String paths;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(Context context, ArrayList<Cell> galleryList) {
+    public MyAdapter(Context context, ArrayList<Cell> galleryList, String allFilesPaths) {
+        this.paths = allFilesPaths;
         this.context = context;
         this.galleryList = galleryList;
+
     }
 
     // Create new views (invoked by the layout manager)
@@ -46,15 +48,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         viewHolder.img.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "" + galleryList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), ImageActivity.class);
+                intent.putExtra("Index", position);
                 intent.putExtra("Image", galleryList.get(position).getPath());
-//                intent.putExtra("list", galleryList);
+                intent.putExtra("Paths", paths);
                 v.getContext().startActivity(intent);
 
             }
         });
     }
+
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
