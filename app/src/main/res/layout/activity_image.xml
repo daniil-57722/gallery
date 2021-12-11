@@ -8,6 +8,8 @@
 
     >
     <ImageView
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ImageOnClick"
@@ -22,7 +24,9 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:text="❮"
-        android:textSize="30sp" />
+        android:onClick="LeftButtonClick"
+        android:textSize="30sp"
+        tools:ignore="OnClick" />
 
     <Button
         android:layout_centerVertical="true"
@@ -34,6 +38,8 @@
         android:textSize="30sp"
         android:id="@+id/button1"
         android:text="❯"
-        android:layout_alignParentRight="true" />
+        android:onClick="RightButtonClick"
+        android:layout_alignParentRight="true"
+        tools:ignore="OnClick" />
 
 </RelativeLayout>
