@@ -12,15 +12,16 @@ import java.io.File;
 
 public class ImageActivity extends AppCompatActivity {
     ImageView imageView;
-    int index = 0;
+    int index;
     String paths;
     String[] pathsArr;
+    Bundle arguments;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
         imageView = findViewById(R.id.ImageOnClick);
-        Bundle arguments = getIntent().getExtras();
+        arguments = getIntent().getExtras();
         index = arguments.getInt("Index");
         paths = arguments.getString("Paths");
         pathsArr = paths.split("#");
@@ -46,8 +47,12 @@ public class ImageActivity extends AppCompatActivity {
 
     public void LeftButtonClick(View v) {
         if (index>0){
-        index--;
-        setImageFromPath(pathsArr[index], imageView);}
+            index--;
+            if (index==0){
+                setImageFromPath(arguments.getString("FirstImage"), imageView);}
+            else{
+                setImageFromPath(pathsArr[index], imageView);}
+                }
         else{
             Toast.makeText(this, "Это первое фото", Toast.LENGTH_LONG).show();
         }
