@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 path.setPath(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)));
                 count++;
                 allFiles.add(path);
-                allFilesPaths = allFilesPaths + "#" + path.getPath();
+
             }
             while (cursor.moveToPrevious() && count < 102);
             cursor.close();
@@ -61,8 +61,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         for (int i = 0; i < allFiles.size(); i++) {
+            allFilesPaths = allFilesPaths + allFiles.get(i).getPath() + "#";
+
             Log.d("picture folders", allFiles.get(i).getTitle() + " and path = " + allFiles.get(i).getPath());
         }
+        Log.d("picture folders", allFilesPaths );
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.gallery);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setHasFixedSize(true);

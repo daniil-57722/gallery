@@ -51,6 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 Intent intent = new Intent(v.getContext(), ImageActivity.class);
                 intent.putExtra("Index", position);
                 intent.putExtra("Image", galleryList.get(position).getPath());
+                intent.putExtra("FirstImage", galleryList.get(0).getPath());
                 intent.putExtra("Paths", paths);
                 v.getContext().startActivity(intent);
 
