@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyGallery</string>
+    <string name="LeftArrow">❮</string>
+    <string name="RightArrow">❯</string>
 </resources>
