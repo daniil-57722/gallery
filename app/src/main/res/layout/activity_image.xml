@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ImageActivity"
-
+    android:background="@drawable/background"
     >
+
     <ImageView
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -17,29 +18,31 @@
 
     <Button
         android:background="@drawable/button"
-        android:id="@+id/button"
+        android:id="@+id/LeftButton"
         android:layout_width="@dimen/heightWidthButton"
         android:layout_height="@dimen/heightWidthButton"
         android:paddingBottom="@dimen/paddingBottomButton"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/marginLeftRightButton"
         android:text="@string/LeftArrow"
+        android:textColor="@color/buttonColor"
         android:onClick="LeftButtonClick"
         android:textSize="@dimen/textSizeButton"
         tools:ignore="OnClick" />
 
     <Button
-        android:layout_centerVertical="true"
-        android:background="@drawable/button"
-        android:layout_marginRight="@dimen/marginLeftRightButton"
+        android:id="@+id/RightButton"
         android:layout_width="@dimen/heightWidthButton"
         android:layout_height="@dimen/heightWidthButton"
-        android:paddingBottom="@dimen/paddingBottomButton"
-        android:textSize="@dimen/textSizeButton"
-        android:id="@+id/button1"
-        android:text="@string/RightArrow"
-        android:onClick="RightButtonClick"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/marginLeftRightButton"
+        android:background="@drawable/button"
+        android:onClick="RightButtonClick"
+        android:paddingBottom="@dimen/paddingBottomButton"
+        android:text="@string/RightArrow"
+        android:textColor="@color/buttonColor"
+        android:textSize="@dimen/textSizeButton"
         tools:ignore="OnClick" />
 
 </RelativeLayout>

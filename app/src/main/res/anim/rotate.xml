@@ -17,7 +17,7 @@
     <set android:interpolator="@android:anim/decelerate_interpolator" >
 
         <scale
-            android:duration="0"
+            android:duration="150"
             android:fillBefore="false"
             android:fromXScale="0.95"
             android:fromYScale="0.95"

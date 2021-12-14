@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -16,6 +19,8 @@ public class ImageActivity extends AppCompatActivity {
     String paths;
     String[] pathsArr;
     Bundle arguments;
+    Button button;
+    Animation animation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,9 @@ public class ImageActivity extends AppCompatActivity {
         }
     }
     public void RightButtonClick(View v) {
+        button = findViewById(R.id.RightButton);
+        animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.rotate);
+        button.startAnimation(animation);
         if (index<pathsArr.length-1){
         index++;
         setImageFromPath(pathsArr[index], imageView);}
@@ -46,6 +54,9 @@ public class ImageActivity extends AppCompatActivity {
     }
 
     public void LeftButtonClick(View v) {
+        button = findViewById(R.id.LeftButton);
+        animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.rotate);
+        button.startAnimation(animation);
         if (index>0){
             index--;
             if (index==0){

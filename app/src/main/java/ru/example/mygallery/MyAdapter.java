@@ -9,27 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
+
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageView;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private ArrayList<Cell> galleryList;
     private Context context;
     String paths;
     public ImageView img;
+    Animation animation;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(Context context, ArrayList<Cell> galleryList, String allFilesPaths) {
@@ -62,7 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 img = v.findViewById(R.id.img);
-                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.rotate);
+                animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.rotate);
                 img.startAnimation(animation);
                 Intent intent = new Intent(v.getContext(), ImageActivity.class);
                 intent.putExtra("Index", position);
