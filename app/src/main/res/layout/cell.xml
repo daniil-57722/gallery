@@ -12,4 +12,6 @@
         android:adjustViewBounds="true"
         android:onClick="ClickImage"/>
 
+
+
 </LinearLayout>
